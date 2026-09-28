@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34" fill="none">
   <rect width="34" height="34" rx="8" fill="#16181b"/>
-  <g stroke="#ff5a1f" stroke-width="2.4">
+  <g stroke="#caa82a" stroke-width="2.4">
     <circle cx="17" cy="17" r="10.5" stroke-width="4.4" stroke-dasharray="4.1 4.1"/>
     <circle cx="17" cy="17" r="7.4"/>
   </g>
-  <circle cx="17" cy="17" r="2.4" fill="#ff5a1f"/>
+  <circle cx="17" cy="17" r="2.4" fill="#caa82a"/>
 </svg>
