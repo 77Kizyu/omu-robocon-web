@@ -8,10 +8,24 @@ import { site, joinSteps, faq, divisions } from '../data/site';
 		<div class="wrap">
 			<p class="eyebrow">Welcome</p>
 			<h1>新歓情報</h1>
-			<p>ものづくりに興味があれば、学年・学部・経験は問いません。まずは見学に来てください。</p>
+			{site.joinOpen && <p>ものづくりに興味があれば、学年・学部・経験は問いません。まずは見学に来てください。</p>}
 		</div>
 	</div>
 
+	{
+		!site.joinOpen && (
+			<div class="page-body">
+				<div class="wrap">
+					<div class="empty" style="padding-block:72px">
+						<p style="font-size:22px;font-weight:700;color:var(--ink);margin-bottom:8px">現在準備中です</p>
+						<p style="margin:0">新歓情報は、公開までしばらくお待ちください。</p>
+					</div>
+				</div>
+			</div>
+		)
+	}
+
+	{site.joinOpen && (
 	<div class="page-body">
 		<div class="wrap">
 			<section>
@@ -89,4 +103,5 @@ import { site, joinSteps, faq, divisions } from '../data/site';
 			</section>
 		</div>
 	</div>
+	)}
 </Base>
