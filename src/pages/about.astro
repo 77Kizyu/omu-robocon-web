@@ -57,6 +57,7 @@ import { site, divisions, process } from '../data/site';
 					<tbody>
 						<tr><th scope="row">名称</th><td>{site.name}</td></tr>
 						<tr><th scope="row">分野</th><td>機械 / 回路 / ソフト</td></tr>
+						<tr><th scope="row">所在地</th><td>〒{site.address.postal}<br />{site.address.lines.join(' ')}</td></tr>
 						<tr><th scope="row">連絡・共有</th><td>Slack・Notion</td></tr>
 						{site.contact.email && <tr><th scope="row">メール</th><td><a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></td></tr>}
 						{site.contact.x && <tr><th scope="row">X</th><td><a href={site.contact.x} rel="noopener noreferrer" target="_blank">{site.contact.xHandle || site.contact.x}</a></td></tr>}

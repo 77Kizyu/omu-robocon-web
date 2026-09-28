@@ -12,9 +12,15 @@ export const site = {
 	description:
 		'大阪公立大学ロボットコンテストクラブの公式サイト。機械・回路・ソフトの3分野で、ロボコン出場を目指してロボットを作っています。',
 
+	// ---- 所在地 ----
+	address: {
+		postal: '599-8531',
+		lines: ['大阪府堺市中区学園町1番1', 'ロボットコンテストクラブ'],
+	},
+
 	// ---- 連絡先・SNS（分かったら埋める。空なら表示されない）----
 	contact: {
-		email: '', // 例: 'robocon@example.com'
+		email: 'sk25677i@st.omu.ac.jp', // 仮。部の共用アドレスを作ったら差し替える
 		x: '', // 例: 'https://x.com/xxxxx'
 		xHandle: '', // 例: '@xxxxx'
 		youtube: '',
