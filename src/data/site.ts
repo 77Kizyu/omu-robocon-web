@@ -33,13 +33,13 @@ export const site = {
 
 export const nav = [
 	{ href: '/join', label: '新歓情報' },
-	{ href: '/about', label: 'サークル紹介' },
+	{ href: '/about', label: '部紹介' },
 	{ href: '/news', label: '活動記事' },
 	{ href: '/results', label: '活動成績' },
 	{ href: '/support', label: 'スポンサー・ご支援' },
 ];
 
-/** 3つの分野。トップ・サークル紹介・新歓で共通利用 */
+/** 3つの分野。トップ・部紹介・新歓で共通利用 */
 export const divisions = [
 	{
 		id: 'mechanical',
