@@ -1,0 +1,19 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	post: CollectionEntry<'news'>;
+}
+const { post } = Astro.props;
+const { title, date, category, summary } = post.data;
+const ymd = date.toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'Asia/Tokyo' }).replaceAll('/', '.');
+---
+
+<a class="card post-card" href={`/news/${post.id}`}>
+	<div class="meta">
+		<time datetime={date.toISOString()}>{ymd}</time>
+		<span class="tag">{category}</span>
+	</div>
+	<h3>{title}</h3>
+	{summary && <p>{summary}</p>}
+</a>

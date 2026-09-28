@@ -1,0 +1,52 @@
+---
+// ロボットアームの製図風イラスト（写真を用意するまでのヒーロー用ビジュアル）
+---
+
+<svg class="hero-art" viewBox="0 0 480 400" role="img" aria-label="ロボットアームの設計図風イラスト" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+	<!-- 歯車 -->
+	<g class="gear" opacity="0.9">
+		<circle cx="88" cy="112" r="44" stroke-width="9" stroke-dasharray="8.64 8.64" />
+		<circle cx="88" cy="112" r="38" />
+		<circle cx="88" cy="112" r="20" />
+		<circle cx="88" cy="112" r="6" fill="currentColor" />
+	</g>
+	<!-- 中心線 -->
+	<g stroke-width="1" stroke-dasharray="10 4 2 4" opacity="0.45">
+		<path d="M20 112h136M88 44v136" />
+		<path d="M220 200v80" />
+	</g>
+	<!-- 地面・ベース -->
+	<path d="M40 340h400" />
+	<rect x="150" y="300" width="140" height="40" rx="4" />
+	<rect x="200" y="250" width="40" height="50" />
+	<path d="M170 340l-14 14M200 340l-14 14M230 340l-14 14M260 340l-14 14M290 340l-14 14" stroke-width="1" opacity="0.45" />
+	<!-- リンク1 -->
+	<g transform="rotate(-42 220 240)">
+		<rect x="194" y="214" width="170" height="52" rx="26" fill="var(--bg)" />
+		<path d="M230 240h96" stroke-width="1" stroke-dasharray="6 4" opacity="0.5" />
+	</g>
+	<!-- リンク2 -->
+	<g transform="rotate(15 308 161)">
+		<rect x="282" y="135" width="150" height="52" rx="26" fill="var(--bg)" />
+		<path d="M320 161h72" stroke-width="1" stroke-dasharray="6 4" opacity="0.5" />
+	</g>
+	<!-- 関節 -->
+	<circle cx="220" cy="240" r="26" fill="var(--bg)" />
+	<circle cx="220" cy="240" r="8" fill="var(--accent)" stroke="var(--accent)" />
+	<circle cx="308" cy="161" r="26" fill="var(--bg)" />
+	<circle cx="308" cy="161" r="8" fill="var(--accent)" stroke="var(--accent)" />
+	<circle cx="403" cy="186" r="14" fill="var(--bg)" />
+	<circle cx="403" cy="186" r="5" fill="var(--accent)" stroke="var(--accent)" />
+	<!-- グリッパ -->
+	<path d="M395 199v40l-8 14M411 199v40l8 14" />
+	<!-- 可動範囲の円弧 -->
+	<path d="M262 138a112 112 0 0 1 60-86" stroke="var(--accent)" stroke-dasharray="6 6" />
+	<path d="M316 58l10-8 2 13" stroke="var(--accent)" />
+	<!-- 寸法線 -->
+	<g stroke-width="1" font-family="var(--font-mono)" font-size="11" fill="currentColor" opacity="0.7">
+		<path d="M150 366h140M150 360v12M290 360v12" />
+		<text x="220" y="384" text-anchor="middle" stroke="none">140</text>
+		<path d="M462 186v154M456 186h12M456 340h12" />
+		<text x="452" y="270" text-anchor="middle" stroke="none" transform="rotate(-90 452 270)">154</text>
+	</g>
+</svg>

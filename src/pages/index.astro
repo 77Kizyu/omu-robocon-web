@@ -1,0 +1,117 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import HeroArt from '../components/HeroArt.astro';
+import PostCard from '../components/PostCard.astro';
+import JoinCta from '../components/JoinCta.astro';
+import { site, divisions, contests, sponsors } from '../data/site';
+
+const posts = (await getCollection('news', ({ data }) => !data.draft)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
+---
+
+<Base>
+	<div class="hero">
+		<div class="wrap">
+			<div>
+				<p class="eyebrow">{site.english}</p>
+				<h1>つくって、<br />動かして、<em>競う。</em></h1>
+				<p class="lead">
+					{site.name}は、機械・回路・ソフトの3分野が力を合わせて、ロボットコンテスト（ロボコン）に挑むものづくりサークルです。
+				</p>
+				<div class="btn-row">
+					<a class="btn primary" href="/join">新歓情報を見る</a>
+					<a class="btn" href="/about">サークル紹介</a>
+				</div>
+			</div>
+			<HeroArt />
+		</div>
+	</div>
+
+	<section>
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">What we do</p>
+				<h2>3つの分野で、1台のロボットをつくる</h2>
+				<p>ロボットは、体（機械）・神経（回路）・頭脳（ソフト）が噛み合って初めて動きます。得意を持ち寄り、互いに教え合いながら製作します。</p>
+			</div>
+			<div class="grid cols-3">
+				{
+					divisions.map((d) => (
+						<article class="card division">
+							<span class="no">{d.no}</span>
+							<span class="en">{d.en}</span>
+							<h3>{d.name}</h3>
+							<p class="lead">{d.lead}</p>
+							<p>{d.body}</p>
+							<ul>{d.items.map((i) => <li>{i}</li>)}</ul>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section style="background:var(--paper);border-block:1px solid var(--line)">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">Robot contests</p>
+				<h2>ロボコンが、ものづくりの目標</h2>
+			</div>
+			<div class="grid cols-2">
+				{
+					contests.map((c) => (
+						<div class="card" style="background:var(--bg)">
+							<h3 style="font-size:20px;margin-bottom:8px">{c.name}</h3>
+							<p style="color:var(--muted);margin:0">{c.note}</p>
+						</div>
+					))
+				}
+			</div>
+			<p style="margin-top:24px"><a href="/results">活動成績を見る →</a></p>
+		</div>
+	</section>
+
+	<section>
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">News</p>
+				<h2>活動記事</h2>
+			</div>
+			<div class="grid cols-3">
+				{posts.map((post) => <PostCard post={post} />)}
+			</div>
+			<p style="margin-top:24px"><a href="/news">記事一覧へ →</a></p>
+		</div>
+	</section>
+
+	{
+		sponsors.length > 0 && (
+			<section style="background:var(--paper);border-block:1px solid var(--line)">
+				<div class="wrap">
+					<div class="section-head">
+						<p class="eyebrow">Sponsors</p>
+						<h2>ご支援いただいている企業・団体</h2>
+					</div>
+					<div class="sponsor-grid">
+						{sponsors.map((s) =>
+							s.url ? (
+								<a class="sponsor" href={s.url} rel="noopener noreferrer" target="_blank">
+									{s.logo ? <img src={s.logo} alt={s.name} loading="lazy" /> : s.name}
+								</a>
+							) : (
+								<div class="sponsor">{s.logo ? <img src={s.logo} alt={s.name} loading="lazy" /> : s.name}</div>
+							),
+						)}
+					</div>
+					<p style="margin-top:24px"><a href="/support">ご支援のお願い →</a></p>
+				</div>
+			</section>
+		)
+	}
+
+	<section>
+		<div class="wrap">
+			<JoinCta />
+		</div>
+	</section>
+</Base>

@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+import JoinCta from '../components/JoinCta.astro';
+import { site, divisions, process } from '../data/site';
+---
+
+<Base title="サークル紹介" description="大阪公立大学ロボットコンテストクラブの活動内容。機械・回路・ソフトの3分野と、ロボットができるまでの流れを紹介します。">
+	<div class="page-head">
+		<div class="wrap">
+			<p class="eyebrow">About</p>
+			<h1>サークル紹介</h1>
+			<p>{site.name}は、ロボコンへの出場を目標に、ゼロからロボットを設計・製作する学生団体です。</p>
+		</div>
+	</div>
+
+	<div class="page-body">
+		<div class="wrap">
+			<section>
+				<div class="section-head">
+					<p class="eyebrow">Divisions</p>
+					<h2>3つの分野</h2>
+					<p>部員はそれぞれ得意・興味のある分野を担当しつつ、他の分野とも協力して1台の機体を完成させます。</p>
+				</div>
+				<div class="grid cols-3">
+					{
+						divisions.map((d) => (
+							<article class="card division" id={d.id}>
+								<span class="no">{d.no}</span>
+								<span class="en">{d.en}</span>
+								<h3>{d.name}</h3>
+								<p class="lead">{d.lead}</p>
+								<p>{d.body}</p>
+								<ul>{d.items.map((i) => <li>{i}</li>)}</ul>
+							</article>
+						))
+					}
+				</div>
+			</section>
+
+			<section>
+				<div class="section-head">
+					<p class="eyebrow">Process</p>
+					<h2>ロボットができるまで</h2>
+					<p>ロボコンの機体は、おおよそ次の流れで作られます。</p>
+				</div>
+				<ol class="steps">
+					{process.map((s) => <li><div><h3>{s.title}</h3><p>{s.body}</p></div></li>)}
+				</ol>
+			</section>
+
+			<section>
+				<div class="section-head">
+					<p class="eyebrow">Info</p>
+					<h2>クラブ情報</h2>
+				</div>
+				<table class="table">
+					<tbody>
+						<tr><th scope="row">名称</th><td>{site.name}</td></tr>
+						<tr><th scope="row">分野</th><td>機械 / 回路 / ソフト</td></tr>
+						<tr><th scope="row">連絡・共有</th><td>Slack・Notion</td></tr>
+						{site.contact.email && <tr><th scope="row">メール</th><td><a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></td></tr>}
+						{site.contact.x && <tr><th scope="row">X</th><td><a href={site.contact.x} rel="noopener noreferrer" target="_blank">{site.contact.xHandle || site.contact.x}</a></td></tr>}
+					</tbody>
+				</table>
+			</section>
+
+			<JoinCta />
+		</div>
+	</div>
+</Base>

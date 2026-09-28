@@ -1,0 +1,15 @@
+---
+import { site } from '../data/site';
+---
+
+<div class="cta">
+	<div>
+		<p class="eyebrow" style="color:var(--accent)">Join us</p>
+		<h2>ロボットを、一緒につくりませんか。</h2>
+		<p>経験は問いません。機械・回路・ソフトのどれか1つから、まずは触ってみてください。</p>
+	</div>
+	<div class="btn-row">
+		<a class="btn primary" href="/join">新歓情報を見る</a>
+		{site.joinFormUrl && <a class="btn" href={site.joinFormUrl} rel="noopener noreferrer" target="_blank">入部届フォーム</a>}
+	</div>
+</div>

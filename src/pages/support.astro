@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, sponsors } from '../data/site';
+---
+
+<Base title="スポンサー・ご支援" description="大阪公立大学ロボットコンテストクラブへのご支援のお願いと、スポンサー企業・団体の紹介。">
+	<div class="page-head">
+		<div class="wrap">
+			<p class="eyebrow">Support</p>
+			<h1>スポンサー・ご支援</h1>
+			<p>ロボットの製作には、材料費・部品代・大会の参加費や輸送費がかかります。私たちの挑戦を支えてくださる企業・団体・個人の皆さまを募集しています。</p>
+		</div>
+	</div>
+	<div class="page-body">
+		<div class="wrap">
+			<section>
+				<div class="section-head">
+					<p class="eyebrow">Sponsors</p>
+					<h2>ご支援いただいている企業・団体</h2>
+				</div>
+				{
+					sponsors.length > 0 ? (
+						<div class="sponsor-grid">
+							{sponsors.map((s) =>
+								s.url ? (
+									<a class="sponsor" href={s.url} rel="noopener noreferrer" target="_blank">
+										{s.logo ? <img src={s.logo} alt={s.name} loading="lazy" /> : s.name}
+									</a>
+								) : (
+									<div class="sponsor">{s.logo ? <img src={s.logo} alt={s.name} loading="lazy" /> : s.name}</div>
+								),
+							)}
+						</div>
+					) : (
+						<div class="empty">スポンサーを募集しています。</div>
+					)
+				}
+			</section>
+
+			<section>
+				<div class="section-head">
+					<p class="eyebrow">Support us</p>
+					<h2>ご支援のお願い</h2>
+					<p>金銭的なご支援のほか、部品・工具・加工などの物品や技術面でのご協力も歓迎します。支援の形や内容は、お気軽にご相談ください。</p>
+				</div>
+				<div class="card">
+					<p style="color:var(--muted)">
+						{
+							site.contact.email || site.contact.x
+								? 'ご支援・ご相談は、下記までご連絡ください。'
+								: '連絡窓口は準備中です。公開までしばらくお待ちください。'
+						}
+					</p>
+					<div class="btn-row">
+						{site.contact.email && <a class="btn primary" href={`mailto:${site.contact.email}`}>メールで相談する</a>}
+						{site.contact.x && <a class="btn" href={site.contact.x} rel="noopener noreferrer" target="_blank">X で連絡する</a>}
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</Base>

@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import { results } from '../data/site';
+
+const years = [...new Set(results.map((r) => r.year))];
+---
+
+<Base title="活動成績" description="大阪公立大学ロボットコンテストクラブの大会での成績。">
+	<div class="page-head">
+		<div class="wrap">
+			<p class="eyebrow">Results</p>
+			<h1>活動成績</h1>
+			<p>出場した大会と、その結果の記録です。</p>
+		</div>
+	</div>
+	<div class="page-body">
+		<div class="wrap">
+			{
+				results.length === 0 ? (
+					<div class="empty">
+						<p style="margin-bottom:8px">成績は現在まとめています。</p>
+						<p style="margin:0">大会の最新情報は<a href="/news">活動記事</a>をご覧ください。</p>
+					</div>
+				) : (
+					years.map((year) => (
+						<section style="margin-bottom:48px">
+							<h2 style="font-family:var(--font-mono);font-size:28px;margin-bottom:16px;color:var(--accent-strong)">{year}</h2>
+							<table class="table">
+								<thead>
+									<tr><th scope="col">大会</th><th scope="col">結果</th><th scope="col">備考</th></tr>
+								</thead>
+								<tbody>
+									{results.filter((r) => r.year === year).map((r) => (
+										<tr><td>{r.contest}</td><td><strong>{r.result}</strong></td><td style="color:var(--muted)">{r.note}</td></tr>
+									))}
+								</tbody>
+							</table>
+						</section>
+					))
+				)
+			}
+		</div>
+	</div>
+</Base>
