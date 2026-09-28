@@ -12,7 +12,9 @@ interface Props {
 
 const { title, description = site.description, type = 'website' } = Astro.props;
 const fullTitle = title ? `${title} | ${site.shortName}` : `${site.name}`;
-const canonical = new URL(Astro.url.pathname, Astro.site);
+// build.format: 'file' だと pathname が /about.html や /index.html になるので、公開URLの形に直す
+const cleanPath = Astro.url.pathname.replace(/(^|\/)index\.html$/, '$1').replace(/\.html$/, '') || '/';
+const canonical = new URL(cleanPath, Astro.site);
 ---
 
 <!doctype html>
