@@ -1,0 +1,87 @@
+---
+/**
+ * ====================================================================
+ *  活動記事の雛形（テンプレート）
+ * ====================================================================
+ *
+ * ★ これは「見本」であり、このファイル単体ではサイトに表示されません。
+ *   （Astroは src/pages/ の中にあるファイルしかページにしないため）
+ *
+ * ★ このサイトで活動記事を増やす、いちばん簡単な方法は【Markdown】です。
+ *   src/content/news/ に .md ファイルを1つ追加するだけで、
+ *   記事一覧・トップページ・日付順の並び替えまで自動でできます。
+ *   書き方は README.md の「活動記事の書き方」を参照してください。
+ *
+ * ★ それでも「HTMLに近い書き方で自由にレイアウトしたい記事が1本だけある」
+ *   という場合は、このファイルを次の手順で使ってください。
+ *
+ *   1. このファイルを src/pages/news/ の中にコピーする
+ *      （インポートのパスは、すでに src/pages/news/ に置く前提で書いてあるので
+ *       そのまま動きます）
+ *   2. ファイル名を記事のURLにする（例: 2026-10-taikai-houkoku.astro
+ *      → /news/2026-10-taikai-houkoku というページになる）
+ *   3. 下の title / date / category の中身を書き換える
+ *   4. <article> の中のHTMLを書き換える
+ *
+ *   ※ 注意：この方法で作った記事は、/news 一覧ページや
+ *   トップページの「新着3件」には自動で出てきません（そこは
+ *   Markdown の記事だけを拾う仕組みのため）。一覧にも出したい場合は、
+ *   素直に Markdown で書くことをおすすめします。
+ * ====================================================================
+ */
+import Base from '../../layouts/Base.astro';
+
+const title = 'ここに記事のタイトルを書く';
+const date = new Date('2026-10-02'); // 公開日
+const category = '活動報告'; // 活動報告 / 大会 / 新歓 / お知らせ / 技術メモ
+
+const ymd = date.toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'Asia/Tokyo' }).replaceAll('/', '.');
+---
+
+<Base title={title} description="（一覧や検索結果に出る、記事の一行説明をここに書く）" type="article">
+	<div class="page-head">
+		<div class="wrap">
+			<div class="meta" style="margin-bottom:14px">
+				<time datetime={date.toISOString()}>{ymd}</time>
+				<span class="tag">{category}</span>
+			</div>
+			<h1>{title}</h1>
+		</div>
+	</div>
+
+	<div class="page-body">
+		<div class="wrap">
+			<article class="prose">
+				<p>
+					リード文（記事の冒頭）。何があったのか、何を伝えたいのかを2〜3行でまとめる。
+				</p>
+
+				<h2>見出し（大）</h2>
+				<p>
+					段落の本文はこのように書く。改行したいときは空行を1つ空ける。
+					<strong>太字にしたいところ</strong>はこう書く。
+				</p>
+
+				<img src="/images/sample.jpg" alt="写真の内容を説明する文（画像が表示できない人のための代替テキスト）" />
+				<p style="margin-top:-1em;color:var(--muted);font-size:14px">
+					↑ 画像は public/images/ フォルダにファイルを置き、src をそのパスに書き換える。
+				</p>
+
+				<h3>見出し（小）</h3>
+				<ul>
+					<li>箇条書きの項目1</li>
+					<li>箇条書きの項目2</li>
+					<li>箇条書きの項目3</li>
+				</ul>
+
+				<blockquote>
+					参加者のコメントや、強調したい一言はこのように引用形式で入れられる。
+				</blockquote>
+
+				<p>まとめの一文。次の活動の予定や、関連リンクなどがあればここに。</p>
+			</article>
+
+			<p style="margin-top:56px"><a href="/news">← 活動記事一覧へ</a></p>
+		</div>
+	</div>
+</Base>
