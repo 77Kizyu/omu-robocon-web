@@ -31,14 +31,14 @@
  */
 import Base from '../../layouts/Base.astro';
 
-const title = 'ここに記事のタイトルを書く';
+const title = 'ホームページを作った話'; // 記事のタイトル
 const date = new Date('2026-10-02'); // 公開日
 const category = '活動報告'; // 活動報告 / 大会 / 新歓 / お知らせ / 技術メモ
 
 const ymd = date.toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'Asia/Tokyo' }).replaceAll('/', '.');
 ---
 
-<Base title={title} description="（一覧や検索結果に出る、記事の一行説明をここに書く）" type="article">
+<Base title={title} description="バイブコーディングはすごいって話" type="article">
 	<div class="page-head">
 		<div class="wrap">
 			<div class="meta" style="margin-bottom:14px">
