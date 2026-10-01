@@ -28,7 +28,7 @@ export const site = {
 	},
 
 	// 新歓情報ページの公開フラグ。false の間は「現在準備中」と表示する（2月頃に true にする）
-	joinOpen: false,
+	joinOpen: true,
 
 	// 入部届の Googleフォーム 回答用URL（createNyubuForm 実行後のログに出るもの）
 	joinFormUrl: '',
