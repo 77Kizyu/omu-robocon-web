@@ -22,18 +22,20 @@ import { site, divisions, process } from '../data/site';
 					<p>部員はそれぞれ得意・興味のある分野を担当しつつ、他の分野とも協力して1台の機体を完成させます。</p>
 				</div>
 				<div class="grid cols-3">
-					{
-						divisions.map((d) => (
-							<article class="card division" id={d.id}>
-								<span class="no">{d.no}</span>
-								<span class="en">{d.en}</span>
-								<h3>{d.name}</h3>
-								<p class="lead">{d.lead}</p>
-								<p>{d.body}</p>
-								<ul>{d.items.map((i) => <li>{i}</li>)}</ul>
-							</article>
-						))
-					}
+					{divisions.map((d) => (
+						<article class="card division" id={d.id}>
+							<span class="no">{d.no}</span>
+							<span class="en">{d.en}</span>
+							<h3>{d.name}</h3>
+							<p class="lead">{d.lead}</p>
+							<p>{d.body}</p>
+							<ul>
+								{d.items.map((i) => (
+									<li>{i}</li>
+								))}
+							</ul>
+						</article>
+					))}
 				</div>
 			</section>
 
@@ -44,7 +46,14 @@ import { site, divisions, process } from '../data/site';
 					<p>ロボコンの機体は、おおよそ次の流れで作られます。</p>
 				</div>
 				<ol class="steps">
-					{process.map((s) => <li><div><h3>{s.title}</h3><p>{s.body}</p></div></li>)}
+					{process.map((s) => (
+						<li>
+							<div>
+								<h3>{s.title}</h3>
+								<p>{s.body}</p>
+							</div>
+						</li>
+					))}
 				</ol>
 			</section>
 
@@ -55,12 +64,44 @@ import { site, divisions, process } from '../data/site';
 				</div>
 				<table class="table">
 					<tbody>
-						<tr><th scope="row">名称</th><td>{site.name}</td></tr>
-						<tr><th scope="row">分野</th><td>機械 / 回路 / ソフト</td></tr>
-						<tr><th scope="row">所在地</th><td>〒{site.address.postal}<br />{site.address.lines.join(' ')}</td></tr>
-						<tr><th scope="row">連絡・共有</th><td>Slack・Notion</td></tr>
-						{site.contact.email && <tr><th scope="row">メール</th><td><a href={`mailto:${site.contact.email}`}>{site.contact.email}</a></td></tr>}
-						{site.contact.x && <tr><th scope="row">X</th><td><a href={site.contact.x} rel="noopener noreferrer" target="_blank">{site.contact.xHandle || site.contact.x}</a></td></tr>}
+						<tr>
+							<th scope="row">名称</th>
+							<td>{site.name}</td>
+						</tr>
+						<tr>
+							<th scope="row">分野</th>
+							<td>機械 / 回路 / ソフト</td>
+						</tr>
+						<tr>
+							<th scope="row">所在地</th>
+							<td>
+								〒{site.address.postal}
+								<br />
+								{site.address.lines.join(' ')}
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">連絡・共有</th>
+							<td>Slack・Notion</td>
+						</tr>
+						{site.contact.email && (
+							<tr>
+								<th scope="row">メール</th>
+								<td>
+									<a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+								</td>
+							</tr>
+						)}
+						{site.contact.x && (
+							<tr>
+								<th scope="row">X</th>
+								<td>
+									<a href={site.contact.x} rel="noopener noreferrer" target="_blank">
+										{site.contact.xHandle || site.contact.x}
+									</a>
+								</td>
+							</tr>
+						)}
 					</tbody>
 				</table>
 			</section>

@@ -16,15 +16,15 @@ const posts = (await getCollection('news', ({ data }) => !data.draft)).sort((a, 
 	</div>
 	<div class="page-body">
 		<div class="wrap">
-			{
-				posts.length > 0 ? (
-					<div class="grid cols-3">
-						{posts.map((post) => <PostCard post={post} />)}
-					</div>
-				) : (
-					<div class="empty">記事はまだありません。</div>
-				)
-			}
+			{posts.length > 0 ? (
+				<div class="grid cols-3">
+					{posts.map((post) => (
+						<PostCard post={post} />
+					))}
+				</div>
+			) : (
+				<div class="empty">記事はまだありません。</div>
+			)}
 		</div>
 	</div>
 </Base>

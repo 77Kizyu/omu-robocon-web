@@ -12,96 +12,116 @@ import { site, joinSteps, faq, divisions } from '../data/site';
 		</div>
 	</div>
 
-	{
-		!site.joinOpen && (
-			<div class="page-body">
-				<div class="wrap">
-					<div class="empty" style="padding-block:72px">
-						<p style="font-size:22px;font-weight:700;color:var(--ink);margin-bottom:8px">現在準備中です</p>
-						<p style="margin:0">新歓情報は、公開までしばらくお待ちください。</p>
-					</div>
+	{!site.joinOpen && (
+		<div class="page-body">
+			<div class="wrap">
+				<div class="empty" style="padding-block:72px">
+					<p style="font-size:22px;font-weight:700;color:var(--ink);margin-bottom:8px">現在準備中です</p>
+					<p style="margin:0">新歓情報は、公開までしばらくお待ちください。</p>
 				</div>
 			</div>
-		)
-	}
+		</div>
+	)}
 
 	{site.joinOpen && (
-	<div class="page-body">
-		<div class="wrap">
-			<section>
-				<div class="section-head">
-					<p class="eyebrow">Apply</p>
-					<h2>入部届の提出</h2>
-					<p>入部を希望する方は、Google フォームまたは紙の入部届のどちらか一方を提出してください。</p>
-				</div>
-				<div class="btn-row">
-					{
-						site.joinFormUrl ? (
-							<a class="btn primary" href={site.joinFormUrl} rel="noopener noreferrer" target="_blank">入部届フォームを開く</a>
+		<div class="page-body">
+			<div class="wrap">
+				<section>
+					<div class="section-head">
+						<p class="eyebrow">Apply</p>
+						<h2>入部届の提出</h2>
+						<p>入部を希望する方は、Google フォームまたは紙の入部届のどちらか一方を提出してください。</p>
+					</div>
+					<div class="btn-row">
+						{site.joinFormUrl ? (
+							<a class="btn primary" href={site.joinFormUrl} rel="noopener noreferrer" target="_blank">
+								入部届フォームを開く
+							</a>
 						) : (
-							<span class="btn primary" aria-disabled="true">入部届フォーム（準備中）</span>
-						)
-					}
-					<a class="btn" href={site.joinPaperUrl} download>紙の入部届（PDF）</a>
-				</div>
-			</section>
+							<span class="btn primary" aria-disabled="true">
+								入部届フォーム（準備中）
+							</span>
+						)}
+						<a class="btn" href={site.joinPaperUrl} download>
+							紙の入部届（PDF）
+						</a>
+					</div>
+				</section>
 
-			<section>
-				<div class="section-head">
-					<p class="eyebrow">Flow</p>
-					<h2>入部までの流れ</h2>
-				</div>
-				<ol class="steps">
-					{joinSteps.map((s) => <li><div><h3>{s.title}</h3><p>{s.body}</p></div></li>)}
-				</ol>
-			</section>
+				<section>
+					<div class="section-head">
+						<p class="eyebrow">Flow</p>
+						<h2>入部までの流れ</h2>
+					</div>
+					<ol class="steps">
+						{joinSteps.map((s) => (
+							<li>
+								<div>
+									<h3>{s.title}</h3>
+									<p>{s.body}</p>
+								</div>
+							</li>
+						))}
+					</ol>
+				</section>
 
-			<section>
-				<div class="section-head">
-					<p class="eyebrow">Fields</p>
-					<h2>やってみたい分野を選べます</h2>
-					<p>入部届で、やりたい分野を複数選べます。決まっていなければ「まだ決めていない」でも大丈夫です。</p>
-				</div>
-				<div class="grid cols-3">
-					{
-						divisions.map((d) => (
+				<section>
+					<div class="section-head">
+						<p class="eyebrow">Fields</p>
+						<h2>やってみたい分野を選べます</h2>
+						<p>入部届で、やりたい分野を複数選べます。決まっていなければ「まだ決めていない」でも大丈夫です。</p>
+					</div>
+					<div class="grid cols-3">
+						{divisions.map((d) => (
 							<a class="card post-card" href={`/about#${d.id}`}>
-								<span class="meta">{d.no} / {d.en.toUpperCase()}</span>
+								<span class="meta">
+									{d.no} / {d.en.toUpperCase()}
+								</span>
 								<h3 style="font-size:24px">{d.name}</h3>
 								<p>{d.lead}</p>
 							</a>
-						))
-					}
-				</div>
-			</section>
-
-			<section>
-				<div class="section-head">
-					<p class="eyebrow">FAQ</p>
-					<h2>よくある質問</h2>
-				</div>
-				<div class="faq">
-					{faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
-				</div>
-			</section>
-
-			<section>
-				<div class="card">
-					<h2 style="font-size:22px;margin-bottom:10px">見学・質問はこちらから</h2>
-					<p style="color:var(--muted)">
-						{
-							site.contact.x || site.contact.email
-								? '気になることがあれば、下記までお気軽にご連絡ください。'
-								: '連絡先は準備中です。公開までしばらくお待ちください。'
-						}
-					</p>
-					<div class="btn-row">
-						{site.contact.x && <a class="btn" href={site.contact.x} rel="noopener noreferrer" target="_blank">X で連絡する</a>}
-						{site.contact.email && <a class="btn" href={`mailto:${site.contact.email}`}>メールで連絡する</a>}
+						))}
 					</div>
-				</div>
-			</section>
+				</section>
+
+				<section>
+					<div class="section-head">
+						<p class="eyebrow">FAQ</p>
+						<h2>よくある質問</h2>
+					</div>
+					<div class="faq">
+						{faq.map((f) => (
+							<details>
+								<summary>{f.q}</summary>
+								<p>{f.a}</p>
+							</details>
+						))}
+					</div>
+				</section>
+
+				<section>
+					<div class="card">
+						<h2 style="font-size:22px;margin-bottom:10px">見学・質問はこちらから</h2>
+						<p style="color:var(--muted)">
+							{site.contact.x || site.contact.email
+								? '気になることがあれば、下記までお気軽にご連絡ください。'
+								: '連絡先は準備中です。公開までしばらくお待ちください。'}
+						</p>
+						<div class="btn-row">
+							{site.contact.x && (
+								<a class="btn" href={site.contact.x} rel="noopener noreferrer" target="_blank">
+									X で連絡する
+								</a>
+							)}
+							{site.contact.email && (
+								<a class="btn" href={`mailto:${site.contact.email}`}>
+									メールで連絡する
+								</a>
+							)}
+						</div>
+					</div>
+				</section>
+			</div>
 		</div>
-	</div>
 	)}
 </Base>

@@ -12,6 +12,16 @@ npm run build    # dist/ に静的ファイルを出力
 
 Node.js 22.12 以上が必要です。
 
+## VSCode で編集する
+
+1. このフォルダ（`omu-robocon-web`）を VSCode で開く。
+2. 右下に出る「おすすめの拡張機能をインストールしますか」で **インストール**（`Astro`・`Prettier`・`EditorConfig` の3つ）。
+   - 後から入れる場合は、左side barの拡張機能アイコン → 検索欄に `@recommended` → それぞれ Install。
+3. ターミナルを開いて `npm install` → `npm run dev`。`http://localhost:4321` をブラウザで開くと、保存するたびに自動で反映される。
+4. ファイルを保存すると Prettier が自動整形する（`.vscode/settings.json` で設定済み）。手動で全体を整形したいときは `npm run format`。
+
+編集対象は基本的に `src/data/site.ts`（文章・連絡先など）と `src/content/news/`（記事）。デザインを直す場合は `src/styles/global.css`。
+
 ## 内容の更新方法
 
 | やりたいこと | 編集する場所 |
@@ -57,6 +67,6 @@ src/
   layouts/Base.astro  共通レイアウト（<head>・ヘッダー・フッター）
   components/         ヘッダー・フッター・カード等
   pages/              各ページ
-  styles/global.css   デザイン（ライト/ダーク両対応）
+  styles/global.css   デザイン（配色・レイアウト）
 public/               favicon・画像・PDF など
 ```

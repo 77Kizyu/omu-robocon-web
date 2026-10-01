@@ -26,7 +26,11 @@ const isCurrent = (href: string) => current === href || current.startsWith(href 
 			<span></span>
 		</button>
 		<nav class="nav" id="site-nav" aria-label="メインメニュー">
-			{nav.map((item) => <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>)}
+			{nav.map((item) => (
+				<a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+					{item.label}
+				</a>
+			))}
 		</nav>
 	</div>
 </header>

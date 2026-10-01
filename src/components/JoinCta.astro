@@ -9,7 +9,13 @@ import { site } from '../data/site';
 		<p>経験は問いません。機械・回路・ソフトのどれか1つから、まずは触ってみてください。</p>
 	</div>
 	<div class="btn-row">
-		<a class="btn primary" href="/join">{site.joinOpen ? '新歓情報を見る' : '新歓情報（準備中）'}</a>
-		{site.joinFormUrl && <a class="btn" href={site.joinFormUrl} rel="noopener noreferrer" target="_blank">入部届フォーム</a>}
+		<a class="btn primary" href="/join">
+			{site.joinOpen ? '新歓情報を見る' : '新歓情報（準備中）'}
+		</a>
+		{site.joinFormUrl && (
+			<a class="btn" href={site.joinFormUrl} rel="noopener noreferrer" target="_blank">
+				入部届フォーム
+			</a>
+		)}
 	</div>
 </div>

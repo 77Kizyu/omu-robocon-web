@@ -18,23 +18,21 @@ import { site, sponsors } from '../data/site';
 					<p class="eyebrow">Sponsors</p>
 					<h2>ご支援いただいている企業・団体</h2>
 				</div>
-				{
-					sponsors.length > 0 ? (
-						<div class="sponsor-grid">
-							{sponsors.map((s) =>
-								s.url ? (
-									<a class="sponsor" href={s.url} rel="noopener noreferrer" target="_blank">
-										{s.logo ? <img src={s.logo} alt={s.name} loading="lazy" /> : s.name}
-									</a>
-								) : (
-									<div class="sponsor">{s.logo ? <img src={s.logo} alt={s.name} loading="lazy" /> : s.name}</div>
-								),
-							)}
-						</div>
-					) : (
-						<div class="empty">スポンサーを募集しています。</div>
-					)
-				}
+				{sponsors.length > 0 ? (
+					<div class="sponsor-grid">
+						{sponsors.map((s) =>
+							s.url ? (
+								<a class="sponsor" href={s.url} rel="noopener noreferrer" target="_blank">
+									{s.logo ? <img src={s.logo} alt={s.name} loading="lazy" /> : s.name}
+								</a>
+							) : (
+								<div class="sponsor">{s.logo ? <img src={s.logo} alt={s.name} loading="lazy" /> : s.name}</div>
+							),
+						)}
+					</div>
+				) : (
+					<div class="empty">スポンサーを募集しています。</div>
+				)}
 			</section>
 
 			<section>
@@ -45,15 +43,19 @@ import { site, sponsors } from '../data/site';
 				</div>
 				<div class="card">
 					<p style="color:var(--muted)">
-						{
-							site.contact.email || site.contact.x
-								? 'ご支援・ご相談は、下記までご連絡ください。'
-								: '連絡窓口は準備中です。公開までしばらくお待ちください。'
-						}
+						{site.contact.email || site.contact.x ? 'ご支援・ご相談は、下記までご連絡ください。' : '連絡窓口は準備中です。公開までしばらくお待ちください。'}
 					</p>
 					<div class="btn-row">
-						{site.contact.email && <a class="btn primary" href={`mailto:${site.contact.email}`}>メールで相談する</a>}
-						{site.contact.x && <a class="btn" href={site.contact.x} rel="noopener noreferrer" target="_blank">X で連絡する</a>}
+						{site.contact.email && (
+							<a class="btn primary" href={`mailto:${site.contact.email}`}>
+								メールで相談する
+							</a>
+						)}
+						{site.contact.x && (
+							<a class="btn" href={site.contact.x} rel="noopener noreferrer" target="_blank">
+								X で連絡する
+							</a>
+						)}
 					</div>
 				</div>
 			</section>

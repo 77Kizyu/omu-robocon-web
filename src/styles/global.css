@@ -175,7 +175,9 @@ p {
 	height: 2px;
 	background: currentColor;
 	position: relative;
-	transition: transform 0.2s, opacity 0.2s;
+	transition:
+		transform 0.2s,
+		opacity 0.2s;
 }
 .menu-btn span::before,
 .menu-btn span::after {
@@ -269,7 +271,10 @@ section {
 	border: 2px solid var(--ink);
 	background: transparent;
 	color: var(--ink);
-	transition: transform 0.15s, background 0.15s, color 0.15s;
+	transition:
+		transform 0.15s,
+		background 0.15s,
+		color 0.15s;
 	font-size: 15px;
 	line-height: 1.2;
 }
@@ -488,7 +493,9 @@ section {
 	gap: 10px;
 	text-decoration: none;
 	height: 100%;
-	transition: transform 0.15s, border-color 0.15s;
+	transition:
+		transform 0.15s,
+		border-color 0.15s;
 }
 .post-card:hover {
 	transform: translateY(-3px);

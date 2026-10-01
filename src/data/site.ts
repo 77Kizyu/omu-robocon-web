@@ -9,8 +9,7 @@ export const site = {
 	shortName: 'OMU ロボコン部',
 	english: 'Osaka Metropolitan University Robot Contest Club',
 	tagline: 'つくって、動かして、競う。',
-	description:
-		'大阪公立大学ロボットコンテストクラブの公式サイト。機械・回路・ソフトの3分野で、ロボコン出場を目指してロボットを作っています。',
+	description: '大阪公立大学ロボットコンテストクラブの公式サイト。機械・回路・ソフトの3分野で、ロボコン出場を目指してロボットを作っています。',
 
 	// ---- 所在地 ----
 	address: {
